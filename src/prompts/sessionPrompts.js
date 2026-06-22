@@ -4,7 +4,7 @@
  */
 
 export function buildSceneFramingPrompt(sceneDescription) {
-  return `Frame this scene for the players. Write a vivid, atmospheric opening narration in second person ("You see…", "The air carries…"). 2–3 paragraphs. Lean into sensory detail and immediate tension.
+  return `Frame this scene for the players. Write a short, atmospheric opening narration in second person ("You see…", "The air carries…"). Focus exclusively on the senses, What you see, what you hear, what you smell etc. don't make it too long or wordy, keep it short and simple.
 
 Scene: ${sceneDescription}`;
 }
