@@ -57,13 +57,13 @@ export class GMOverrideDialog {
         buttons: [
           {
             action:  'approve',
-            label:   game.i18n.localize('AIDM.Override.Approve'),
+            label:   'Approve',
             icon:    'fa-solid fa-check',
             default: true,
           },
           {
             action: 'skip',
-            label:  game.i18n.localize('AIDM.Override.Skip'),
+            label:  'Skip Turn',
             icon:   'fa-solid fa-forward',
           },
         ],

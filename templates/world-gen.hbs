@@ -1,28 +1,28 @@
 <form class="aidm-world-gen-form standard-form">
   <div class="form-group">
-    <label>{{localize "AIDM.WorldGen.CampaignName.Label"}}</label>
+    <label>Campaign Name</label>
     <div class="form-fields">
       <input
         type="text"
         name="campaignName"
         value="{{campaignName}}"
-        placeholder="{{localize "AIDM.WorldGen.CampaignName.Placeholder"}}"
+        placeholder="e.g. The Age of Ash"
         required
       />
     </div>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.WorldGen.Theme.Label"}}</label>
+    <label>Theme &amp; Setting</label>
     <div class="form-fields">
       <textarea name="theme" rows="3"
-        placeholder="{{localize "AIDM.WorldGen.Theme.Placeholder"}}">{{theme}}</textarea>
+        placeholder="Dark medieval fantasy, post-apocalyptic magic, pirate seas…">{{theme}}</textarea>
     </div>
-    <p class="hint">{{localize "AIDM.WorldGen.Theme.Hint"}}</p>
+    <p class="hint">Be as specific or broad as you like — the AI fills in the gaps.</p>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.WorldGen.Tone.Label"}}</label>
+    <label>Tone</label>
     <div class="form-fields">
       <select name="tone">
         {{#each tones}}
@@ -33,32 +33,32 @@
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.WorldGen.GameSystem.Label"}}</label>
+    <label>Game System</label>
     <div class="form-fields">
       <input type="text" name="gameSystem" value="{{gameSystem}}" />
     </div>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.WorldGen.PlayerCount.Label"}}</label>
+    <label>Number of Players</label>
     <div class="form-fields">
       <input type="number" name="playerCount" value="{{playerCount}}" min="1" max="8" />
     </div>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.WorldGen.Notes.Label"}}</label>
+    <label>Session Zero Notes</label>
     <div class="form-fields">
       <textarea name="sessionZeroNotes" rows="4"
-        placeholder="{{localize "AIDM.WorldGen.Notes.Placeholder"}}">{{sessionZeroNotes}}</textarea>
+        placeholder="Backstory elements, things to avoid, specific requests…">{{sessionZeroNotes}}</textarea>
     </div>
-    <p class="hint">{{localize "AIDM.WorldGen.Notes.Hint"}}</p>
+    <p class="hint">Optional. Anything the AI should know before generating.</p>
   </div>
 
   <footer class="sheet-footer">
     <button type="button" data-action="generate" class="bright">
       <i class="fa-solid fa-wand-magic-sparkles"></i>
-      {{localize "AIDM.WorldGen.Generate"}}
+      Generate World
     </button>
   </footer>
 </form>

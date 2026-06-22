@@ -62,8 +62,8 @@ Hooks.on('renderSceneDirectory', (app, [html]) => {
   const actions = html.querySelector('.header-actions');
   if (!actions) return;
   const btn = document.createElement('button');
-  btn.setAttribute('data-tooltip', game.i18n.localize('AIDM.SceneGen.Tooltip'));
-  btn.setAttribute('aria-label',   game.i18n.localize('AIDM.SceneGen.Tooltip'));
+  btn.setAttribute('data-tooltip', 'Generate AI Scene');
+  btn.setAttribute('aria-label',   'Generate AI Scene');
   btn.innerHTML = '<i class="fa-solid fa-map-location-dot"></i>';
   btn.addEventListener('click', () => new SceneGenForm().render({ force: true }));
   actions.prepend(btn);
@@ -75,8 +75,8 @@ Hooks.on('renderActorDirectory', (app, [html]) => {
   const actions = html.querySelector('.header-actions');
   if (!actions) return;
   const btn = document.createElement('button');
-  btn.setAttribute('data-tooltip', game.i18n.localize('AIDM.ActorGen.Tooltip'));
-  btn.setAttribute('aria-label',   game.i18n.localize('AIDM.ActorGen.Tooltip'));
+  btn.setAttribute('data-tooltip', 'Generate AI NPC');
+  btn.setAttribute('aria-label',   'Generate AI NPC');
   btn.innerHTML = '<i class="fa-solid fa-person-rays"></i>';
   btn.addEventListener('click', () => new ActorGenForm().render({ force: true }));
   actions.prepend(btn);
@@ -90,14 +90,14 @@ Hooks.on('renderJournalDirectory', (app, [html]) => {
   if (!actions) return;
 
   const worldGenBtn = document.createElement('button');
-  worldGenBtn.setAttribute('data-tooltip', game.i18n.localize('AIDM.Journal.GenerateWorld'));
-  worldGenBtn.setAttribute('aria-label', game.i18n.localize('AIDM.Journal.GenerateWorld'));
+  worldGenBtn.setAttribute('data-tooltip', 'Generate Campaign World');
+  worldGenBtn.setAttribute('aria-label',   'Generate Campaign World');
   worldGenBtn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i>';
   worldGenBtn.addEventListener('click', () => new WorldGenForm().render({ force: true }));
 
   const panelBtn = document.createElement('button');
-  panelBtn.setAttribute('data-tooltip', game.i18n.localize('AIDM.Panel.Open'));
-  panelBtn.setAttribute('aria-label', game.i18n.localize('AIDM.Panel.Open'));
+  panelBtn.setAttribute('data-tooltip', 'Open AI Dungeon Master');
+  panelBtn.setAttribute('aria-label',   'Open AI Dungeon Master');
   panelBtn.innerHTML = '<i class="fa-solid fa-dragon"></i>';
   panelBtn.addEventListener('click', () => DMPanel.open());
 

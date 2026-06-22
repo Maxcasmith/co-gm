@@ -20,7 +20,7 @@ export class AIDMSettingsForm extends HandlebarsApplicationMixin(ApplicationV2) 
     await game.settings.set(MODULE_ID, `${SETTINGS.API_KEY_PREFIX}.${provider}`, apiKey);
     await game.settings.set(MODULE_ID, SETTINGS.COMBAT_SYSTEM,  combatSystem);
 
-    ui.notifications.info(game.i18n.localize('AIDM.Notifications.SettingsSaved'));
+    ui.notifications.info('AI DM settings saved.');
     this.close();
   }
 
@@ -30,7 +30,7 @@ export class AIDMSettingsForm extends HandlebarsApplicationMixin(ApplicationV2) 
     const apiKey = form.querySelector('[name="apiKey"]').value;
 
     if (!apiKey) {
-      ui.notifications.warn(game.i18n.localize('AIDM.Notifications.InvalidKey'));
+      ui.notifications.warn('API key is invalid or missing.');
       return;
     }
 
@@ -40,14 +40,12 @@ export class AIDMSettingsForm extends HandlebarsApplicationMixin(ApplicationV2) 
     try {
       const valid = await new ProviderClass().validateKey(apiKey);
       if (valid) {
-        ui.notifications.info(game.i18n.localize('AIDM.Notifications.ConnectionSuccess'));
+        ui.notifications.info('Connection successful.');
       } else {
-        ui.notifications.error(game.i18n.localize('AIDM.Notifications.InvalidKey'));
+        ui.notifications.error('API key is invalid or missing.');
       }
     } catch (err) {
-      ui.notifications.error(
-        game.i18n.format('AIDM.Notifications.ConnectionFailed', { error: err.message })
-      );
+      ui.notifications.error(`Connection failed: ${err.message}`);
     }
   }
 
@@ -55,7 +53,7 @@ export class AIDMSettingsForm extends HandlebarsApplicationMixin(ApplicationV2) 
     id: 'aidm-settings',
     classes: ['aidm-settings'],
     window: {
-      title: 'AIDM.Settings.Title',
+      title: 'AI Dungeon Master Settings',
       icon: 'fa-solid fa-robot',
       resizable: false,
     },

@@ -4,9 +4,9 @@ import { getAllProviders } from './providers/registry.js';
 
 export function registerSettings() {
   game.settings.registerMenu(MODULE_ID, 'settingsMenu', {
-    name: 'AIDM.Settings.Menu.Name',
-    label: 'AIDM.Settings.Menu.Label',
-    hint: 'AIDM.Settings.Menu.Hint',
+    name: 'AI DM Configuration',
+    label: 'Configure',
+    hint: 'Configure your LLM provider, model selection, and API keys.',
     icon: 'fa-solid fa-robot',
     type: AIDMSettingsForm,
     restricted: true,
@@ -47,8 +47,8 @@ export function registerSettings() {
 
   // GM oversight mode — pause before each NPC action for GM approval.
   game.settings.register(MODULE_ID, SETTINGS.GM_OVERSIGHT, {
-    name: 'AIDM.Settings.GMOversight.Name',
-    hint: 'AIDM.Settings.GMOversight.Hint',
+    name: 'AI Combat: GM Oversight Mode',
+    hint: 'Show a confirmation dialog before each NPC AI action executes. Approve to proceed or skip to pass the turn. Recommended when first using the AI combat system.',
     scope: 'world',
     config: true,
     type: Boolean,
@@ -58,8 +58,8 @@ export function registerSettings() {
 
   // AI combat auto-run toggle — visible in the standard Foundry module settings.
   game.settings.register(MODULE_ID, SETTINGS.AI_COMBAT_AUTO, {
-    name: 'AIDM.Settings.AICombatAuto.Name',
-    hint: 'AIDM.Settings.AICombatAuto.Hint',
+    name: 'AI Combat: Auto-run NPC turns',
+    hint: "When enabled, the AI automatically executes each non-player combatant's turn. Disable to use the Run AI Turn button in the DM panel instead.",
     scope: 'world',
     config: true,
     type: Boolean,

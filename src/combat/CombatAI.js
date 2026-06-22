@@ -178,7 +178,7 @@ export class CombatAI {
   async _sendNarration(text) {
     await ChatMessage.create({
       content: `<div class="aidm-narration">${text.replace(/\n/g, '<br>')}</div>`,
-      speaker: { alias: game.i18n.localize('AIDM.Panel.ChatAlias') },
+      speaker: { alias: 'Dungeon Master' },
       flags:   { [MODULE_ID]: { isCombatNarration: true } },
     });
   }

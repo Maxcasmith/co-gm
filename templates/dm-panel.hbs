@@ -5,11 +5,11 @@
     <div class="aidm-mode-buttons">
       <button type="button" data-action="setMode" data-mode="narrative"
         class="aidm-mode-btn{{#if isNarrativeMode}} active{{/if}}">
-        <i class="fa-solid fa-book-open"></i> {{localize "AIDM.Panel.Mode.Narrative"}}
+        <i class="fa-solid fa-book-open"></i> Narrative
       </button>
       <button type="button" data-action="setMode" data-mode="npc"
         class="aidm-mode-btn{{#if isNPCMode}} active{{/if}}">
-        <i class="fa-solid fa-person"></i> {{localize "AIDM.Panel.Mode.NPC"}}
+        <i class="fa-solid fa-person"></i> NPC
       </button>
     </div>
 
@@ -20,13 +20,13 @@
       <option value="{{this.name}}"{{#if this.selected}} selected{{/if}}>{{this.name}}</option>
       {{/each}}
       {{else}}
-      <option value="">{{localize "AIDM.Panel.NPC.None"}}</option>
+      <option value="">No NPCs in vault</option>
       {{/if}}
     </select>
     {{/if}}
 
     <button type="button" data-action="refreshContext" class="aidm-icon-btn"
-      data-tooltip="{{localize "AIDM.Panel.RefreshContext"}}">
+      data-tooltip="Refresh world context from vault">
       <i class="fa-solid fa-arrows-rotate"></i>
     </button>
   </div>
@@ -40,13 +40,13 @@
       {{#if this.canSend}}
       <button type="button" class="aidm-send-to-chat-btn" data-action="sendToChat"
         data-msg-id="{{this.id}}">
-        <i class="fa-solid fa-comment-dots"></i> {{localize "AIDM.Panel.SendToChat"}}
+        <i class="fa-solid fa-comment-dots"></i> Send to Chat
       </button>
       {{/if}}
     </div>
     {{/each}}
     {{#unless history.length}}
-    <div class="aidm-empty">{{localize "AIDM.Panel.Empty"}}</div>
+    <div class="aidm-empty">The Dungeon Master awaits…</div>
     {{/unless}}
   </div>
 
@@ -54,19 +54,19 @@
   <div class="aidm-input-area">
     <div class="aidm-quick-actions">
       <button type="button" data-action="frameScene"
-        data-tooltip="{{localize "AIDM.Panel.FrameScene"}}">
+        data-tooltip="Frame Scene — use input text as scene description">
         <i class="fa-solid fa-map-location-dot"></i>
       </button>
       <button type="button" data-action="takeNotes"
-        data-tooltip="{{localize "AIDM.Panel.TakeNotes"}}">
+        data-tooltip="Take Notes — summarise this exchange to the vault">
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
       <button type="button" data-action="clearHistory"
-        data-tooltip="{{localize "AIDM.Panel.ClearHistory"}}">
+        data-tooltip="Clear conversation history">
         <i class="fa-solid fa-broom"></i>
       </button>
       <button type="button" data-action="runAITurn"
-        data-tooltip="{{localize "AIDM.Panel.RunAITurn"}}">
+        data-tooltip="Run AI Turn — execute the current NPC's turn">
         <i class="fa-solid fa-swords"></i>
       </button>
     </div>

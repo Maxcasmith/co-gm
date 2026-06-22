@@ -1,6 +1,6 @@
 <form class="aidm-settings-form standard-form">
   <div class="form-group">
-    <label>{{localize "AIDM.Settings.Provider.Label"}}</label>
+    <label>Provider</label>
     <div class="form-fields">
       <select name="provider" id="aidm-provider">
         {{#each providers}}
@@ -11,7 +11,7 @@
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.Settings.Model.Label"}}</label>
+    <label>Model</label>
     <div class="form-fields">
       <select name="model" id="aidm-model">
         {{#each models}}
@@ -22,20 +22,20 @@
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.Settings.ApiKey.Label"}}</label>
+    <label>API Key</label>
     <div class="form-fields">
       <input
         type="password"
         name="apiKey"
         id="aidm-apikey"
         value="{{apiKey}}"
-        placeholder="{{localize "AIDM.Settings.ApiKey.Placeholder"}}"
+        placeholder="Enter API key…"
       />
     </div>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.Settings.CombatSystem.Label"}}</label>
+    <label>Combat System</label>
     <div class="form-fields">
       <select name="combatSystem" id="aidm-combat-system">
         {{#each combatSystems}}
@@ -43,17 +43,17 @@
         {{/each}}
       </select>
     </div>
-    <p class="hint">{{localize "AIDM.Settings.CombatSystem.Hint"}}</p>
+    <p class="hint">Override auto-detection if you are using a custom system adapter.</p>
   </div>
 
   <footer class="sheet-footer flexrow">
     <button type="button" data-action="testConnection">
       <i class="fa-solid fa-plug-circle-check"></i>
-      {{localize "AIDM.Settings.TestConnection"}}
+      Test Connection
     </button>
     <button type="button" data-action="save">
       <i class="fa-solid fa-floppy-disk"></i>
-      {{localize "AIDM.Settings.Save"}}
+      Save
     </button>
   </footer>
 </form>

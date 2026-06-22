@@ -1,24 +1,24 @@
 <form class="aidm-scene-gen-form standard-form">
 
   <div class="form-group">
-    <label>{{localize "AIDM.SceneGen.Name.Label"}}</label>
+    <label>Scene Name</label>
     <div class="form-fields">
       <input type="text" name="sceneName"
-        placeholder="{{localize "AIDM.SceneGen.Name.Placeholder"}}" />
+        placeholder="e.g. The Obsidian Vault" />
     </div>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.SceneGen.Description.Label"}}</label>
+    <label>Description</label>
     <div class="form-fields">
       <textarea name="description" rows="4"
-        placeholder="{{localize "AIDM.SceneGen.Description.Placeholder"}}"></textarea>
+        placeholder="A flooded tomb beneath the city sewers, the air thick with alchemical fumes…"></textarea>
     </div>
-    <p class="hint">{{localize "AIDM.SceneGen.Description.Hint"}}</p>
+    <p class="hint">Describe the location — the AI fills in atmosphere, lighting, and layout suggestions.</p>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.SceneGen.Type.Label"}}</label>
+    <label>Scene Type</label>
     <div class="form-fields">
       <select name="sceneType">
         {{#each sceneTypes}}
@@ -29,7 +29,7 @@
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.SceneGen.Size.Label"}}</label>
+    <label>Map Size</label>
     <div class="form-fields">
       <select name="size">
         {{#each sizes}}
@@ -40,7 +40,7 @@
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.SceneGen.Lighting.Label"}}</label>
+    <label>Lighting</label>
     <div class="form-fields">
       <select name="lighting">
         {{#each lightings}}
@@ -51,17 +51,17 @@
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.SceneGen.LightCount.Label"}}</label>
+    <label>Light Sources</label>
     <div class="form-fields">
       <input type="number" name="lightCount" value="3" min="0" max="12" step="1" />
     </div>
-    <p class="hint">{{localize "AIDM.SceneGen.LightCount.Hint"}}</p>
+    <p class="hint">Number of ambient lights the AI will place on the scene (0–12).</p>
   </div>
 
   <footer class="sheet-footer">
     <button type="button" data-action="generate">
       <i class="fa-solid fa-map"></i>
-      {{localize "AIDM.SceneGen.Generate"}}
+      Generate Scene
     </button>
   </footer>
 

@@ -9,13 +9,6 @@
   },
   "esmodules": ["src/main.js"],
   "styles": ["styles/ai-vtt.css"],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ],
   "authors": [
     {
       "name": "Max Smith",

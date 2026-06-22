@@ -16,7 +16,7 @@ const CR_OPTIONS = [
 export class ActorGenForm extends HandlebarsApplicationMixin(ApplicationV2) {
   static async onGenerate(event, target) {
     if (!game.user.isGM) {
-      ui.notifications.error(game.i18n.localize('AIDM.Error.GMOnly'));
+      ui.notifications.error('This action is only available to the Game Master.');
       return;
     }
     const form       = target.closest('.aidm-actor-gen-form');
@@ -26,29 +26,25 @@ export class ActorGenForm extends HandlebarsApplicationMixin(ApplicationV2) {
     const spawnCount = parseInt(form.querySelector('[name="spawnCount"]').value, 10) || 0;
 
     if (!concept) {
-      ui.notifications.warn(game.i18n.localize('AIDM.ActorGen.Validation.Required'));
+      ui.notifications.warn('Please describe the NPC concept.');
       return;
     }
 
     target.disabled    = true;
-    target.textContent = game.i18n.localize('AIDM.ActorGen.Generating');
+    target.textContent = 'Generating…';
 
     try {
       const actor = await ActorGenerator.generate({ concept, cr, role });
 
-      ui.notifications.info(
-        game.i18n.format('AIDM.ActorGen.Success', { name: actor.name })
-      );
+      ui.notifications.info(`NPC "${actor.name}" created in the Actors directory.`);
 
       // Optionally spawn tokens immediately onto the current scene
       if (spawnCount > 0) {
         if (!canvas?.scene) {
-          ui.notifications.warn(game.i18n.localize('AIDM.Combat.NoCombat'));
+          ui.notifications.warn('No active combat encounter.');
         } else {
           await TokenSpawner.spawnGroup(actor, spawnCount);
-          ui.notifications.info(
-            game.i18n.format('AIDM.ActorGen.Spawned', { count: spawnCount, name: actor.name })
-          );
+          ui.notifications.info(`${spawnCount} token(s) for ${actor.name} placed on the active scene.`);
         }
       }
 
@@ -57,12 +53,10 @@ export class ActorGenForm extends HandlebarsApplicationMixin(ApplicationV2) {
 
       this.close();
     } catch (err) {
-      ui.notifications.error(
-        game.i18n.format('AIDM.ActorGen.Error.Failed', { error: err.message })
-      );
+      ui.notifications.error(`NPC generation failed: ${err.message}`);
     } finally {
       target.disabled    = false;
-      target.textContent = game.i18n.localize('AIDM.ActorGen.Generate');
+      target.textContent = 'Generate NPC';
     }
   }
 
@@ -70,7 +64,7 @@ export class ActorGenForm extends HandlebarsApplicationMixin(ApplicationV2) {
     id: 'aidm-actor-gen',
     classes: ['aidm-actor-gen'],
     window: {
-      title:     'AIDM.ActorGen.Title',
+      title:     'Generate NPC',
       icon:      'fa-solid fa-person-rays',
       resizable: false,
     },
@@ -88,11 +82,11 @@ export class ActorGenForm extends HandlebarsApplicationMixin(ApplicationV2) {
     return {
       crOptions: CR_OPTIONS,
       roles: [
-        { id: 'soldier',     label: game.i18n.localize('AIDM.ActorGen.Role.Soldier')     },
-        { id: 'spellcaster', label: game.i18n.localize('AIDM.ActorGen.Role.Spellcaster') },
-        { id: 'supporter',   label: game.i18n.localize('AIDM.ActorGen.Role.Supporter')   },
-        { id: 'boss',        label: game.i18n.localize('AIDM.ActorGen.Role.Boss')        },
-        { id: 'minion',      label: game.i18n.localize('AIDM.ActorGen.Role.Minion')      },
+        { id: 'soldier',     label: 'Soldier (frontline fighter)'  },
+        { id: 'spellcaster', label: 'Spellcaster (ranged/control)' },
+        { id: 'supporter',   label: 'Supporter (healer/buffer)'    },
+        { id: 'boss',        label: 'Boss (legendary threat)'      },
+        { id: 'minion',      label: 'Minion (weak, numerous)'      },
       ],
     };
   }

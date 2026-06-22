@@ -1,16 +1,16 @@
 <form class="aidm-actor-gen-form standard-form">
 
   <div class="form-group">
-    <label>{{localize "AIDM.ActorGen.Concept.Label"}}</label>
+    <label>NPC Concept</label>
     <div class="form-fields">
       <textarea name="concept" rows="3"
-        placeholder="{{localize "AIDM.ActorGen.Concept.Placeholder"}}"></textarea>
+        placeholder="A tiefling warlock enforcer working for the Crimson Hand thieves guild…"></textarea>
     </div>
-    <p class="hint">{{localize "AIDM.ActorGen.Concept.Hint"}}</p>
+    <p class="hint">Include personality, role, any specific traits you want. The AI builds the stat block.</p>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.ActorGen.CR.Label"}}</label>
+    <label>Challenge Rating</label>
     <div class="form-fields">
       <select name="cr">
         {{#each crOptions}}
@@ -21,7 +21,7 @@
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.ActorGen.Role.Label"}}</label>
+    <label>Combat Role</label>
     <div class="form-fields">
       <select name="role">
         {{#each roles}}
@@ -29,21 +29,21 @@
         {{/each}}
       </select>
     </div>
-    <p class="hint">{{localize "AIDM.ActorGen.Role.Hint"}}</p>
+    <p class="hint">Shapes the AI's stat allocation and action choices.</p>
   </div>
 
   <div class="form-group">
-    <label>{{localize "AIDM.ActorGen.SpawnCount.Label"}}</label>
+    <label>Spawn on Current Scene</label>
     <div class="form-fields">
       <input type="number" name="spawnCount" value="0" min="0" max="20" step="1" />
     </div>
-    <p class="hint">{{localize "AIDM.ActorGen.SpawnCount.Hint"}}</p>
+    <p class="hint">Immediately place this many tokens on the active scene. Set 0 to skip.</p>
   </div>
 
   <footer class="sheet-footer">
     <button type="button" data-action="generate">
       <i class="fa-solid fa-person-rays"></i>
-      {{localize "AIDM.ActorGen.Generate"}}
+      Generate NPC
     </button>
   </footer>
 

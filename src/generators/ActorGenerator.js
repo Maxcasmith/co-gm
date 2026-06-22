@@ -21,7 +21,7 @@ export class ActorGenerator {
    */
   static async generate(params) {
     const provider = getActiveProvider();
-    if (!provider) throw new Error(game.i18n.localize('AIDM.SceneGen.Error.NoProvider'));
+    if (!provider) throw new Error('No LLM provider configured. Open AI DM Settings first.');
 
     const systemPrompt = await ContextBuilder.buildSystemPrompt();
     const prompt       = buildNPCGenPrompt(params);
@@ -37,7 +37,7 @@ export class ActorGenerator {
     try {
       data = JSON.parse(raw);
     } catch {
-      throw new Error(game.i18n.localize('AIDM.ActorGen.Error.ParseFailed'));
+      throw new Error('Could not parse the AI NPC response as JSON. Try again.');
     }
 
     if (game.system?.id === 'dnd5e') {

@@ -36,7 +36,7 @@ export class DMPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     const input = this.element.querySelector('#aidm-input');
     const description = input?.value.trim();
     if (!description) {
-      ui.notifications.warn(game.i18n.localize('AIDM.Panel.FrameScene.EmptyHint'));
+      ui.notifications.warn('Describe the scene in the input field first.');
       return;
     }
     input.value = '';
@@ -50,21 +50,21 @@ export class DMPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
   static async onRefreshContext(event, target) {
     await this.brain.refreshSystemPrompt();
-    ui.notifications.info(game.i18n.localize('AIDM.Panel.ContextRefreshed'));
+    ui.notifications.info('World context refreshed from vault.');
   }
 
   static async onTakeNotes(event, target) {
     if (!this.brain.history.length) {
-      ui.notifications.warn(game.i18n.localize('AIDM.Panel.Notes.EmptyHint'));
+      ui.notifications.warn('Nothing to take notes on yet.');
       return;
     }
-    this._push('system', 'Scribe', game.i18n.localize('AIDM.Panel.Notes.Taking'));
+    this._push('system', 'Scribe', 'Taking notes…');
     await this.render();
 
     try {
       const notes = await NoteTaker.takeNotes(this.brain);
       this._pop();
-      const summary = notes?.sessionLog ?? game.i18n.localize('AIDM.Panel.Notes.NoContent');
+      const summary = notes?.sessionLog ?? 'Nothing notable to record.';
       this._push('system', 'Scribe', `Notes saved: ${summary}`);
     } catch (err) {
       this._pop();
@@ -80,7 +80,7 @@ export class DMPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     if (!msg) return;
     await ChatMessage.create({
       content: `<div class="aidm-narration">${msg.content.replace(/\n/g, '<br>')}</div>`,
-      speaker: { alias: game.i18n.localize('AIDM.Panel.ChatAlias') },
+      speaker: { alias: 'Dungeon Master' },
       flags: { [MODULE_ID]: { isDMNarration: true } },
     });
   }
@@ -99,16 +99,16 @@ export class DMPanel extends HandlebarsApplicationMixin(ApplicationV2) {
   static async onRunAITurn(event, target) {
     const combat = game.combat;
     if (!combat) {
-      ui.notifications.warn(game.i18n.localize('AIDM.Combat.NoCombat'));
+      ui.notifications.warn('No active combat encounter.');
       return;
     }
     const combatant = combat.combatant;
     if (!combatant) {
-      ui.notifications.warn(game.i18n.localize('AIDM.Combat.NoActiveCombatant'));
+      ui.notifications.warn('No combatant is currently taking their turn.');
       return;
     }
     if (combatant.actor?.hasPlayerOwner) {
-      ui.notifications.warn(game.i18n.localize('AIDM.Combat.PlayerTurn'));
+      ui.notifications.warn("It is a player character's turn — the AI does not control PCs.");
       return;
     }
 
@@ -137,7 +137,7 @@ export class DMPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     id: 'aidm-dm-panel',
     classes: ['aidm-dm-panel'],
     window: {
-      title: 'AIDM.Panel.Title',
+      title: 'AI Dungeon Master',
       icon: 'fa-solid fa-dragon',
       resizable: true,
     },
@@ -146,7 +146,7 @@ export class DMPanel extends HandlebarsApplicationMixin(ApplicationV2) {
       send:           DMPanel.onSend,
       frameScene:     DMPanel.onFrameScene,
       setMode:        DMPanel.onSetMode,
-      refreshContext:  DMPanel.onRefreshContext,
+      refreshContext: DMPanel.onRefreshContext,
       takeNotes:      DMPanel.onTakeNotes,
       sendToChat:     DMPanel.onSendToChat,
       clearHistory:   DMPanel.onClearHistory,
@@ -189,8 +189,8 @@ export class DMPanel extends HandlebarsApplicationMixin(ApplicationV2) {
       isNPCMode,
       npcs,
       placeholder: isNPCMode
-        ? game.i18n.localize('AIDM.Panel.Input.NPCPlaceholder')
-        : game.i18n.localize('AIDM.Panel.Input.NarrativePlaceholder'),
+        ? 'What does the player say to this NPC? (Enter to send)'
+        : 'Instruct the AI DM or describe a situation… (Enter to send)',
     };
   }
 
