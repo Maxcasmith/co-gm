@@ -1,0 +1,25 @@
+{
+  "id": "ai-vtt",
+  "title": "AI Dungeon Master",
+  "description": "An AI-powered Dungeon Master for Foundry VTT. Generates worlds, drives narrative, and runs intelligent combat.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "esmodules": ["src/main.js"],
+  "styles": ["styles/ai-vtt.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Max Smith",
+      "email": "maxcasmith@gmail.com"
+    }
+  ]
+}

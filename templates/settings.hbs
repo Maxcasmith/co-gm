@@ -1,0 +1,59 @@
+<form class="aidm-settings-form standard-form">
+  <div class="form-group">
+    <label>{{localize "AIDM.Settings.Provider.Label"}}</label>
+    <div class="form-fields">
+      <select name="provider" id="aidm-provider">
+        {{#each providers}}
+        <option value="{{this.id}}"{{#if this.active}} selected{{/if}}>{{this.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.Settings.Model.Label"}}</label>
+    <div class="form-fields">
+      <select name="model" id="aidm-model">
+        {{#each models}}
+        <option value="{{this.id}}"{{#if this.active}} selected{{/if}}>{{this.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.Settings.ApiKey.Label"}}</label>
+    <div class="form-fields">
+      <input
+        type="password"
+        name="apiKey"
+        id="aidm-apikey"
+        value="{{apiKey}}"
+        placeholder="{{localize "AIDM.Settings.ApiKey.Placeholder"}}"
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.Settings.CombatSystem.Label"}}</label>
+    <div class="form-fields">
+      <select name="combatSystem" id="aidm-combat-system">
+        {{#each combatSystems}}
+        <option value="{{this.id}}"{{#if this.active}} selected{{/if}}>{{this.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <p class="hint">{{localize "AIDM.Settings.CombatSystem.Hint"}}</p>
+  </div>
+
+  <footer class="sheet-footer flexrow">
+    <button type="button" data-action="testConnection">
+      <i class="fa-solid fa-plug-circle-check"></i>
+      {{localize "AIDM.Settings.TestConnection"}}
+    </button>
+    <button type="button" data-action="save">
+      <i class="fa-solid fa-floppy-disk"></i>
+      {{localize "AIDM.Settings.Save"}}
+    </button>
+  </footer>
+</form>

@@ -1,0 +1,81 @@
+<div class="aidm-panel-inner">
+
+  {{!-- Toolbar --}}
+  <div class="aidm-toolbar">
+    <div class="aidm-mode-buttons">
+      <button type="button" data-action="setMode" data-mode="narrative"
+        class="aidm-mode-btn{{#if isNarrativeMode}} active{{/if}}">
+        <i class="fa-solid fa-book-open"></i> {{localize "AIDM.Panel.Mode.Narrative"}}
+      </button>
+      <button type="button" data-action="setMode" data-mode="npc"
+        class="aidm-mode-btn{{#if isNPCMode}} active{{/if}}">
+        <i class="fa-solid fa-person"></i> {{localize "AIDM.Panel.Mode.NPC"}}
+      </button>
+    </div>
+
+    {{#if isNPCMode}}
+    <select id="aidm-npc-select" class="aidm-npc-select">
+      {{#if npcs.length}}
+      {{#each npcs}}
+      <option value="{{this.name}}"{{#if this.selected}} selected{{/if}}>{{this.name}}</option>
+      {{/each}}
+      {{else}}
+      <option value="">{{localize "AIDM.Panel.NPC.None"}}</option>
+      {{/if}}
+    </select>
+    {{/if}}
+
+    <button type="button" data-action="refreshContext" class="aidm-icon-btn"
+      data-tooltip="{{localize "AIDM.Panel.RefreshContext"}}">
+      <i class="fa-solid fa-arrows-rotate"></i>
+    </button>
+  </div>
+
+  {{!-- Message history --}}
+  <div class="aidm-history" id="aidm-history">
+    {{#each history}}
+    <div class="aidm-msg aidm-msg--{{this.role}}">
+      <div class="aidm-msg-label">{{this.label}}</div>
+      <div class="aidm-msg-content">{{this.content}}</div>
+      {{#if this.canSend}}
+      <button type="button" class="aidm-send-to-chat-btn" data-action="sendToChat"
+        data-msg-id="{{this.id}}">
+        <i class="fa-solid fa-comment-dots"></i> {{localize "AIDM.Panel.SendToChat"}}
+      </button>
+      {{/if}}
+    </div>
+    {{/each}}
+    {{#unless history.length}}
+    <div class="aidm-empty">{{localize "AIDM.Panel.Empty"}}</div>
+    {{/unless}}
+  </div>
+
+  {{!-- Input area --}}
+  <div class="aidm-input-area">
+    <div class="aidm-quick-actions">
+      <button type="button" data-action="frameScene"
+        data-tooltip="{{localize "AIDM.Panel.FrameScene"}}">
+        <i class="fa-solid fa-map-location-dot"></i>
+      </button>
+      <button type="button" data-action="takeNotes"
+        data-tooltip="{{localize "AIDM.Panel.TakeNotes"}}">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </button>
+      <button type="button" data-action="clearHistory"
+        data-tooltip="{{localize "AIDM.Panel.ClearHistory"}}">
+        <i class="fa-solid fa-broom"></i>
+      </button>
+      <button type="button" data-action="runAITurn"
+        data-tooltip="{{localize "AIDM.Panel.RunAITurn"}}">
+        <i class="fa-solid fa-swords"></i>
+      </button>
+    </div>
+    <div class="aidm-input-row">
+      <textarea id="aidm-input" placeholder="{{placeholder}}" rows="3"></textarea>
+      <button type="button" data-action="send" class="aidm-send-btn bright">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+</div>

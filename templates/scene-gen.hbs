@@ -1,0 +1,68 @@
+<form class="aidm-scene-gen-form standard-form">
+
+  <div class="form-group">
+    <label>{{localize "AIDM.SceneGen.Name.Label"}}</label>
+    <div class="form-fields">
+      <input type="text" name="sceneName"
+        placeholder="{{localize "AIDM.SceneGen.Name.Placeholder"}}" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.SceneGen.Description.Label"}}</label>
+    <div class="form-fields">
+      <textarea name="description" rows="4"
+        placeholder="{{localize "AIDM.SceneGen.Description.Placeholder"}}"></textarea>
+    </div>
+    <p class="hint">{{localize "AIDM.SceneGen.Description.Hint"}}</p>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.SceneGen.Type.Label"}}</label>
+    <div class="form-fields">
+      <select name="sceneType">
+        {{#each sceneTypes}}
+        <option value="{{this.id}}">{{this.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.SceneGen.Size.Label"}}</label>
+    <div class="form-fields">
+      <select name="size">
+        {{#each sizes}}
+        <option value="{{this.id}}"{{#if this.active}} selected{{/if}}>{{this.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.SceneGen.Lighting.Label"}}</label>
+    <div class="form-fields">
+      <select name="lighting">
+        {{#each lightings}}
+        <option value="{{this.id}}"{{#if this.active}} selected{{/if}}>{{this.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.SceneGen.LightCount.Label"}}</label>
+    <div class="form-fields">
+      <input type="number" name="lightCount" value="3" min="0" max="12" step="1" />
+    </div>
+    <p class="hint">{{localize "AIDM.SceneGen.LightCount.Hint"}}</p>
+  </div>
+
+  <footer class="sheet-footer">
+    <button type="button" data-action="generate">
+      <i class="fa-solid fa-map"></i>
+      {{localize "AIDM.SceneGen.Generate"}}
+    </button>
+  </footer>
+
+</form>

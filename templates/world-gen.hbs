@@ -1,0 +1,64 @@
+<form class="aidm-world-gen-form standard-form">
+  <div class="form-group">
+    <label>{{localize "AIDM.WorldGen.CampaignName.Label"}}</label>
+    <div class="form-fields">
+      <input
+        type="text"
+        name="campaignName"
+        value="{{campaignName}}"
+        placeholder="{{localize "AIDM.WorldGen.CampaignName.Placeholder"}}"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.WorldGen.Theme.Label"}}</label>
+    <div class="form-fields">
+      <textarea name="theme" rows="3"
+        placeholder="{{localize "AIDM.WorldGen.Theme.Placeholder"}}">{{theme}}</textarea>
+    </div>
+    <p class="hint">{{localize "AIDM.WorldGen.Theme.Hint"}}</p>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.WorldGen.Tone.Label"}}</label>
+    <div class="form-fields">
+      <select name="tone">
+        {{#each tones}}
+        <option value="{{this.value}}"{{#if this.active}} selected{{/if}}>{{this.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.WorldGen.GameSystem.Label"}}</label>
+    <div class="form-fields">
+      <input type="text" name="gameSystem" value="{{gameSystem}}" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.WorldGen.PlayerCount.Label"}}</label>
+    <div class="form-fields">
+      <input type="number" name="playerCount" value="{{playerCount}}" min="1" max="8" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "AIDM.WorldGen.Notes.Label"}}</label>
+    <div class="form-fields">
+      <textarea name="sessionZeroNotes" rows="4"
+        placeholder="{{localize "AIDM.WorldGen.Notes.Placeholder"}}">{{sessionZeroNotes}}</textarea>
+    </div>
+    <p class="hint">{{localize "AIDM.WorldGen.Notes.Hint"}}</p>
+  </div>
+
+  <footer class="sheet-footer">
+    <button type="button" data-action="generate" class="bright">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      {{localize "AIDM.WorldGen.Generate"}}
+    </button>
+  </footer>
+</form>
